@@ -3,8 +3,12 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './routes/Root.jsx';
 import SignIn from './routes/SignIn.jsx';
-import './index.css';
 import Admin from './routes/Admin.jsx';
+import Register from './routes/Register.jsx';
+import Success from './routes/Success.jsx';
+import './index.css';
+import Messages from './routes/Messages.jsx';
+import Emails from './routes/Emails.jsx';
 
 const router = createBrowserRouter([
     {
@@ -18,6 +22,22 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <Admin />
+    },
+    {
+        path: '/register',
+        element: <Register />
+    },
+    {
+        path: '/success',
+        element: <Success />
+    },
+    {
+        path: '/messages',
+        element: <Messages />
+    },
+    {
+        path: '/emails',
+        element: <Emails />
     }
 ]);
 

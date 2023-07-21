@@ -1,0 +1,13 @@
+.messages {
+	border-radius: 8px;
+	width: fit-content;
+	background-color: white;
+	color: #182F33;
+	margin-inline: auto;
+	margin-block-end: 1rem;
+	padding: 4px;
+}
+
+h3 {
+	margin: 4px;
+}
