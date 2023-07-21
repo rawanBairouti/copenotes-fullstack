@@ -1,0 +1,44 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  border-radius: 50px;
+  width: 70%;
+  padding: 1.5rem;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #FDB4F7);
+}
+
+.content {
+  width: 70%;
+  margin-inline: auto;
+  padding: 1.5rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.content a {
+  
+  border-radius: 8px;
+  border: 3px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-family: inherit;
+  color: #182F33;
+  background-color: white;
+  cursor: pointer;
+  transition: filter 300ms;
+  text-decoration: none;
+}
+
+.content a:hover {
+  filter: drop-shadow(0 0 0.5em #FDB4F7);
+}
