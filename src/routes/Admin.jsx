@@ -6,8 +6,7 @@ export default function Admin() {
         <>
             <Header />
             <div className='content'>
-                <a href='/messages'>Manage Message</a>
-                <a href='/emails'>Manage Emails</a>
+                <a href='/messages'>Manage Messages</a>
             </div>
         </>
     );

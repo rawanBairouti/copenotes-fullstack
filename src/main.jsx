@@ -8,7 +8,6 @@ import Register from './routes/Register.jsx';
 import Success from './routes/Success.jsx';
 import './index.css';
 import Messages from './routes/Messages.jsx';
-import Emails from './routes/Emails.jsx';
 
 const router = createBrowserRouter([
     {
@@ -34,10 +33,6 @@ const router = createBrowserRouter([
     {
         path: '/messages',
         element: <Messages />
-    },
-    {
-        path: '/emails',
-        element: <Emails />
     }
 ]);
 
