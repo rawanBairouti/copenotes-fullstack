@@ -23,17 +23,25 @@ export default function Messages() {
             headers: {
                 'Content-Type': 'application/json',
             },
-			body: JSON.stringify({ message: newMessage }),
+            body: JSON.stringify({ message: newMessage }),
         })
-            .then((response) => response.json())
-            .then((data) => console.log(data))
+            .then((response) => {
+                if (response.status === 200) {
+                    setError('');
+                    setSuccess('Message added!');
+                    setNewMessage('');
+                    setTimeout(() => setSuccess(''), 7000);
+                }
+                else {
+                    return response.json().then((result) => {
+                        setError(result.error);
+                        setTimeout(() => setError(''), 7000);
+                    })
+                }
+            })
             .catch((error) => {
                 setError(error.message);
-                setTimeout(() => setError(''), 3000);
             });
-        setSuccess('Message added!');
-        setNewMessage('');
-        setTimeout(() => setSuccess(''), 3000);
     };
 
     const handleChange = (event) => {
@@ -53,11 +61,10 @@ export default function Messages() {
                         type='text'
                         value={newMessage}
                         onChange={handleChange}
-                        required
                     />
                     <button type='submit'>Add Message</button>
                     {success && <h4>{success}</h4>}
-                    {error && <h4>{error}</h4>}
+                    {error && <h4 className='error'>{error}</h4>}
                 </form>
             </div>
         </>

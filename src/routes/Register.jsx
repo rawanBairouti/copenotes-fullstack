@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Header.jsx';
 import './SignIn.css';
 
 export default function Register() {
-    const [users, setUsers] = useState([{ name: '', email: '' }]);
-    const [currentUser, setCurrentUser] = useState({ name: '', email: '' });
+    const [newUser, setNewUser] = useState({ name: '', email: '' });
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -17,38 +16,35 @@ export default function Register() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (users.find((user) => user.email === currentUser.email)) {
-            setError('Email already registered.');
-            setTimeout(() => {
-                setError('');
-            }, 3000);
-        } else if (validateEmail(currentUser.email)) {
+        if (validateEmail(newUser.email)) {
             setError('');
-            setUsers([...users, currentUser]);
             fetch('http://127.0.0.1:3000/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(currentUser),
+                body: JSON.stringify(newUser),
             })
                 .then(response => {
                     if (response.status === 200) navigate('/success');
+                    else {
+                        return response.json().then(result => setError(result.error))
+                    }
                 })
                 .catch((error) => {
-                    setError(error);
+                    setError(error.message);
                 });
         } else {
             setError('Please enter a valid email address.');
             setTimeout(() => {
                 setError('');
-            }, 3000);
+            }, 7000);
         }
     };
 
     const handleChange = (event) => {
-        setCurrentUser({
-            ...currentUser,
+        setNewUser({
+            ...newUser,
             [event.target.name]: event.target.value,
         });
     };
@@ -62,9 +58,8 @@ export default function Register() {
                     <input
                         name='name'
                         type='text'
-                        value={currentUser.name}
+                        value={newUser.name}
                         onChange={handleChange}
-                        required
                     />
                 </label>
                 <label>
@@ -72,9 +67,8 @@ export default function Register() {
                     <input
                         name='email'
                         type='email'
-                        value={currentUser.email}
+                        value={newUser.email}
                         onChange={handleChange}
-                        required
                     />
                 </label>
                 <button type='submit'>Register</button>
