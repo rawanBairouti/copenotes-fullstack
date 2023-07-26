@@ -1,6 +1,6 @@
-# CopeNotes
+# HappyNotes
 
-Welcome to CopeNotes! This application is designed to send random happy messages to registered users via email. The purpose is to bring a little bit of joy and positivity into people's day.
+Welcome to HappyNotes! This application is designed to send random happy messages to registered users via email. The purpose is to bring a little bit of joy and positivity into people's day.
 
 ## Features
 
